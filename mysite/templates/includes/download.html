@@ -1,0 +1,26 @@
+{% extends 'layout.html' %} {% block body %}
+
+<a id="start" href="C:\\Users\\kamti\\Desktop\\WebApplication_Release\\webapp\\instance\\htmlfi\\KAMTI\\1573630884310\\processed_file.txt" download="manish.txt">Download</a>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $.ajax({
+            type: 'POST',
+            url: '/',
+            contentType: 'application/json',
+            data: JSON.stringify(project),
+            success: function(data, status) {
+                // redirect must be defined and must be true
+                // console.log(data);
+                if (data.redirect !== undefined && data.redirect) {
+                    window.location.href = data.redirect_url;
+                    // window.location.replace(data.redirect_url);
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+</script>
+{% endblock %}
